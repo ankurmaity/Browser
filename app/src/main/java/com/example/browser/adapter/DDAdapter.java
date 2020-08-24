@@ -23,7 +23,6 @@ public class DDAdapter extends RecyclerView.Adapter<DDAdapter.ViewHolder> {
     private GenericCallback mRemoveCallback;
     private List<DDModel> mDataList;
     private Activity mActivity;
-    private int viewType = 0;
 
     public DDAdapter(Activity activity, List<DDModel> dataList, RecyclerViewCallback recyclerViewCallback) {
         if (!Utilities.has(this.mDataList)) {
@@ -58,6 +57,10 @@ public class DDAdapter extends RecyclerView.Adapter<DDAdapter.ViewHolder> {
         return mDataList.size();
     }
 
+    /**
+     * Set adapter list and notify
+     * @param dataList
+     */
     public void setmDataList(List<DDModel> dataList) {
         if (!Utilities.has(this.mDataList)) {
             this.mDataList = new ArrayList<>();

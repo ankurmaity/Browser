@@ -51,6 +51,10 @@ public class BrowseFragment extends BaseFragment {
         return mView;
     }
 
+    /**
+     * Initialize
+     * @param savedInstanceState
+     */
     private void init(Bundle savedInstanceState) {
         webView = mView.findViewById(R.id.web_view);
         if (savedInstanceState != null) {
@@ -59,6 +63,10 @@ public class BrowseFragment extends BaseFragment {
 
     }
 
+    /**
+     * Load url to web view
+     * @param input
+     */
     private void callURL(String input) {
         webView.loadUrl(input);
 
@@ -75,6 +83,7 @@ public class BrowseFragment extends BaseFragment {
         webView.setWebChromeClient(new WebChromeClient() {
             @Override
             public void onProgressChanged(WebView view, int newProgress) {
+                //Handle progress bar
                 super.onProgressChanged(view, newProgress);
                 progressBar.setProgress(newProgress);
                 if (newProgress < 100 && progressBar.getVisibility() == ProgressBar.GONE) {
@@ -101,7 +110,6 @@ public class BrowseFragment extends BaseFragment {
                 }
                 Log.d(TAG, input);
                 webView.loadUrl(input);
-//                        editText.setText("");
             }
 
         } catch (Exception e) {
@@ -110,6 +118,10 @@ public class BrowseFragment extends BaseFragment {
     }
 
 
+    /**
+     * Get search text or url and identify for processing
+     * @param input
+     */
     public void processInput(String input) {
         boolean isValidURL = Patterns.WEB_URL.matcher(input).matches();
         Log.d(TAG, input + "--Valid URL-" + isValidURL);
@@ -121,6 +133,10 @@ public class BrowseFragment extends BaseFragment {
         }
     }
 
+    /**
+     * Process search text based on the search engine selected
+     * @param input
+     */
     private void seachText(String input) {
         String url = getActivity().getString(R.string.url_google_search);
         switch (((BrowserActivity) getActivity()).getSearchEngine()) {
@@ -138,6 +154,9 @@ public class BrowseFragment extends BaseFragment {
     }
 
 
+    /**
+     * Call back when url is changed internally in webview
+     */
     private GenericCallback urlChangeCallback = new GenericCallback() {
         @Override
         public void callback(Object url) {
@@ -152,6 +171,10 @@ public class BrowseFragment extends BaseFragment {
 
     }
 
+    /**
+     * Get url from web view
+     * @return
+     */
     public String getURL() {
         if (Utilities.has(webView.getUrl())) {
             if (webView.getTitle().equalsIgnoreCase("about:blank")) {
@@ -163,6 +186,10 @@ public class BrowseFragment extends BaseFragment {
         }
     }
 
+    /**
+     * Get title of the website opened
+     * @return
+     */
     public String getTitle() {
         if (Utilities.has(webView.getTitle())) {
             if (webView.getTitle().equalsIgnoreCase("about:blank")) {
@@ -175,6 +202,9 @@ public class BrowseFragment extends BaseFragment {
         }
     }
 
+    /**
+     * Clear wensite from Web view
+     */
     public void clearWebView() {
         if (Utilities.has(webView.getUrl())) {
             webView.loadUrl("about:blank");

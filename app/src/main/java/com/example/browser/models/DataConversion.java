@@ -13,6 +13,10 @@ import java.util.ArrayList;
  */
 public class DataConversion {
 
+    /**
+     * Generate list for search engines
+     * @return
+     */
     public ArrayList<DDModel> fetchSearchEngineList() {
         ArrayList<DDModel> engineList = new ArrayList<>();
         ApplicationClass applicationClass = ApplicationClass.getInstance();
@@ -29,6 +33,11 @@ public class DataConversion {
         return engineList;
     }
 
+    /**
+     * Generate list of tabs opened
+     * @param tabList
+     * @return
+     */
     public ArrayList<DDModel> fetchTabDDList(ArrayList<BrowseFragment> tabList) {
         ArrayList<DDModel> tabDDList = new ArrayList<>();
         ApplicationClass applicationClass = ApplicationClass.getInstance();

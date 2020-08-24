@@ -3,7 +3,6 @@ package com.example.browser.activity;
 import android.app.Activity;
 import android.view.View;
 import android.view.inputmethod.InputMethodManager;
-import android.widget.EditText;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.DialogFragment;
@@ -18,6 +17,9 @@ import com.example.browser.utils.Utilities;
  */
 public abstract class BaseActivity extends AppCompatActivity implements View.OnClickListener {
 
+    /**
+     * Hide keyboard
+     */
     public void hideKeyboard() {
         InputMethodManager imm = (InputMethodManager) getSystemService(Activity.INPUT_METHOD_SERVICE);
         View view = getCurrentFocus();
@@ -27,6 +29,10 @@ public abstract class BaseActivity extends AppCompatActivity implements View.OnC
         imm.hideSoftInputFromWindow(view.getWindowToken(), 0);
     }
 
+    /**
+     * Show keyboard
+     * @param view
+     */
     public void showKeyboard(View view) {
         InputMethodManager imm = (InputMethodManager) getSystemService(Activity.INPUT_METHOD_SERVICE);
 //        View view = getCurrentFocus();
@@ -36,19 +42,33 @@ public abstract class BaseActivity extends AppCompatActivity implements View.OnC
         imm.showSoftInput(view, InputMethodManager.SHOW_IMPLICIT);
     }
 
+    /**
+     * Add DialogFragment
+     * @param fragment
+     * @param tag
+     * @param addToBackStack
+     */
     public void addDialogFragment(DialogFragment fragment, String tag, boolean addToBackStack) {
         FragmentManager fragmentManager = getSupportFragmentManager();
         fragment.show(fragmentManager, "tag");
     }
 
+    /**
+     * Add fragment
+     * @param fragment
+     * @param tag
+     * @param containerId
+     */
     public void addFragment(Fragment fragment, String tag, int containerId) {
         addFragment(fragment, tag, containerId, false);
     }
 
-    public void replaceFragment(Fragment fragment, String tag, int containerId) {
-        replaceFragment(fragment, tag, containerId, false);
-    }
-
+    /**
+     * Add fragment from don't add to back stack
+     * @param fragment
+     * @param tag
+     * @param containerId
+     */
     public void addFragment(Fragment fragment, String tag, int containerId, boolean addToBackStack) {
         FragmentManager fragmentManager = getSupportFragmentManager();
         FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
@@ -60,6 +80,23 @@ public abstract class BaseActivity extends AppCompatActivity implements View.OnC
         fragmentTransaction.commit();
     }
 
+    /**
+     * Replace Fragment
+     * @param fragment
+     * @param tag
+     * @param containerId
+     */
+    public void replaceFragment(Fragment fragment, String tag, int containerId) {
+        replaceFragment(fragment, tag, containerId, false);
+    }
+
+    /**
+     * Replace fragment from don't add to back stack
+     * @param fragment
+     * @param tag
+     * @param containerId
+     * @param addToBackStack
+     */
     public void replaceFragment(Fragment fragment, String tag, int containerId, boolean addToBackStack) {
         FragmentManager fragmentManager = getSupportFragmentManager();
         FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
@@ -71,6 +108,10 @@ public abstract class BaseActivity extends AppCompatActivity implements View.OnC
         fragmentTransaction.commit();
     }
 
+    /**
+     * Remove fragment on basis of tag
+     * @param tag
+     */
     public void removeFragment(String tag) {
         FragmentManager fragmentManager = getSupportFragmentManager();
         Fragment fragment = fragmentManager.findFragmentByTag(tag);

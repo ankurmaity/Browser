@@ -98,6 +98,9 @@ public class BrowserActivity extends BaseActivity implements TextView.OnEditorAc
         }
     }
 
+    /**
+     * Open new Tab
+     */
     private void newTab() {
         app.activeTab = new BrowseFragment();
         app.tabList.add(app.activeTab);
@@ -160,6 +163,10 @@ public class BrowserActivity extends BaseActivity implements TextView.OnEditorAc
         }
     }
 
+    /**
+     * Load particular tab
+     * @param browseFragment
+     */
     private void loadTab(BrowseFragment browseFragment) {
         replaceFragment(browseFragment, browseFragment.getTag(), R.id.body);
         app.activeTab = browseFragment;
@@ -171,6 +178,9 @@ public class BrowserActivity extends BaseActivity implements TextView.OnEditorAc
         ((TextView) findViewById(R.id.tab_count)).setText((app.tabList.indexOf(browseFragment) + 1) + "");
     }
 
+    /**
+     * Callback will be triggered when a tab is removed
+     */
     private GenericCallback removeTabCallback = new GenericCallback() {
         @Override
         public void callback(Object o) {
@@ -188,9 +198,9 @@ public class BrowserActivity extends BaseActivity implements TextView.OnEditorAc
     public boolean onEditorAction(TextView view, int id, KeyEvent keyEvent) {
         switch (id) {
             case EditorInfo.IME_ACTION_NEXT:
-                view.clearFocus();
                 app.activeTab.processInput(view.getText() + "");
                 hideKeyboard();
+                view.clearFocus();
                 return true;
         }
         return false;

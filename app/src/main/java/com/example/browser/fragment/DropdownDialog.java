@@ -70,6 +70,9 @@ public class DropdownDialog extends DialogFragment implements View.OnClickListen
 
     }
 
+    /**
+     * Set lit to adapter
+     */
     private void setListAdapter() {
         RecyclerView recyclerView = mView.findViewById(R.id.dd_recycler);
 
@@ -111,7 +114,6 @@ public class DropdownDialog extends DialogFragment implements View.OnClickListen
         switch (view.getId()) {
             case R.id.close_iv:
                 DropdownDialog.this.dismiss();
-//                mGenericCallback.callback(null);
                 break;
         }
 
