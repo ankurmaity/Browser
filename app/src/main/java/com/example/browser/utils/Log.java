@@ -10,7 +10,7 @@ import com.example.browser.BuildConfig;
 import com.example.browser.utils.Utilities;
 
 /**
- * @author Koustuv
+ * @author ankur
  */
 
 public class Log {
