@@ -1,0 +1,22 @@
+<resources>
+    <string name="app_name">Browser</string>
+
+    <string name="hint_url">Search or type web address</string>
+    <string name="internet_not_available">Internet not available</string>
+
+    <string name="google">Google</string>
+    <string name="yahoo">Yahoo</string>
+    <string name="wiki">Wikipedia</string>
+
+    <string name="url_google_search">google.com/search?q=</string>
+    <string name="url_yahoo_search">in.search.yahoo.com/search?q=</string>
+    <string name="url_wiki_search">en.wikipedia.org/w/index.php?search=</string>
+
+    <string name="url_google">https://www.google.com</string>
+    <string name="url_yahoo">https://www.yahoo.com</string>
+    <string name="url_wiki">https://en.wikipedia.org</string>
+
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+
+</resources>
